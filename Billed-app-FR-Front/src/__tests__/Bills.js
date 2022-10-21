@@ -4,6 +4,7 @@
 
 import {screen, waitFor} from "@testing-library/dom"
 import BillsUI from "../views/BillsUI.js"
+import Bills from "../containers/Bills"
 import { bills } from "../fixtures/bills.js"
 import { ROUTES_PATH} from "../constants/routes.js";
 import {localStorageMock} from "../__mocks__/localStorage.js";
@@ -34,6 +35,11 @@ describe("Given I am connected as an employee", () => {
       const antiChrono = (a, b) => ((a < b) ? 1 : -1)
       const datesSorted = [...dates].sort(antiChrono)
       expect(dates).toEqual(datesSorted)
+    })
+    test("Then the images should be displayed when you click on the eye icon", () => {
+      const bill = new Bills;
+      bill.handleClickIconEye(document.querySelectorAll(`div[data-testid="icon-eye"]`));
+
     })
   })
 })
