@@ -19,6 +19,9 @@ export default class NewBill {
   handleChangeFile = e => {
     e.preventDefault()
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
+    const filePath = e.target.value.split(/\\/g)
+    const fileName = filePath[filePath.length-1]
+
     if (!file.type.includes('image')) {
       document.querySelector(".div-file").classList.add("file-incorrect");
       this.formIsValid = false;
@@ -28,8 +31,7 @@ export default class NewBill {
     this.formIsValid = true;
     document.querySelector(".div-file").classList.remove("file-incorrect");
   
-    const filePath = e.target.value.split(/\\/g)
-    const fileName = filePath[filePath.length-1]
+    
     const formData = new FormData()
     const email = JSON.parse(localStorage.getItem("user")).email
     formData.append('file', file)
