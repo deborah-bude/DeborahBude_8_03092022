@@ -108,32 +108,9 @@ describe("Given I am connected as an employee", () => {
       jest.spyOn(bill, 'updateBill')
       jest.spyOn(bill, 'onNavigate')
 
-      console.log(e.target.querySelector(`input[data-testid="datepicker"]`).value)
       bill.handleSubmit(e);
       expect(bill.updateBill).toHaveBeenCalled();
       expect(bill.onNavigate).toHaveBeenCalled();
     })
-
-    // test("The form can't be submit", () => {
-    //   document.body.innerHTML = NewBillUI()
-
-    //   const onNavigate = (pathname) => {
-    //     document.body.innerHTML = ROUTES({ pathname })
-    //   }
-
-    //   Object.defineProperty(window, 'localStorage', { value: localStorageMock })
-    //   window.localStorage.setItem('user', JSON.stringify({
-    //     type: 'Employee',
-    //     email: 'test@test.com'
-    //   }))
-
-    //   const bill = new NewBill({ document, store: mockStore, onNavigate, localStorage: window.localStorage });
-    //   const e = {
-    //     preventDefault: jest.fn(),
-    //   }
-    //   bill.handleSubmit(e);
-    //   expect(bill.updateBill).not.toHaveBeenCalled();
-    //   expect(bill.onNavigate).not.toHaveBeenCalled();
-    // })
   })
 })
